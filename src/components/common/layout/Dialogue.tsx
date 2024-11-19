@@ -18,6 +18,7 @@ import {
 import OutlineButton from "../button/OutlineButton";
 import CommonButton from "../button/Button";
 import { useState } from "react";
+import terms_and_conditions from "../../../assets/constants/termsAndConditions.json";
 
 interface CommonDialogueProps {
   isOpen: boolean;
@@ -81,11 +82,12 @@ const CommonDialogue: React.FC<CommonDialogueProps> = ({
                     </AccordionButton>
                   </h2>
                   <AccordionPanel pb={4}>
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem Ipsum has been the industry's
-                    standard dummy text ever since the 1500s, when an unknown
-                    printer took a galley of type and scrambled it to make a
-                    type specimen book.
+                    {terms_and_conditions.items.map((item, index) => (
+                      <div key={index} style={{ marginBottom: "1.5em" }}>
+                        <h4>{item.title}</h4>
+                        <p>{item.description}</p>
+                      </div>
+                    ))}
                   </AccordionPanel>
                 </AccordionItem>
               </Accordion>
